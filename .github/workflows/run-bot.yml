@@ -1,0 +1,28 @@
+name: Run Discord Bot
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'  # Restarts every 5 hours
+  workflow_dispatch:         # Allows manual trigger from GitHub UI
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 290     # ~4hrs 50min, safely under GitHub's 6hr limit
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: python bot.py
