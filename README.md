@@ -8,10 +8,21 @@ A fun and interactive Discord bot with random quotes, greetings, birthday wishes
 - **`speedy`** - Get a random motivational speed quote (40 variations!)
 - **`meow`** - Receive a cute cat greeting (35 variations!)
 - **`happy birthday`** - Get double birthday wishes (responds twice, 12 messages!)
-- **`knock knock`** - Hear a random knock-knock joke (25 jokes!)
+- **`knock knock`** - Hear a random knock-knock joke (121 jokes!)
 
 ### Media Commands:
 - **`smeme`** - Get a random funny meme GIF (30 GIFs!)
+- **`shelp`** - Show all available commands, including sticker shortcuts
+
+### Multiplayer Games:
+- **`sgames`** - Show supported games and active lobbies in the current channel
+- **`sgame create <game>`** - Create a lobby for `tictactoe`, `connect4`, `nim`, or `guessnumber`
+- **`sgame join <id>`** - Join a lobby before it starts
+- **`sgame start <id>`** - Start the lobby as the host once enough players joined
+- **`sgame move <id> <move>`** - Make a move in the active game using the game ID
+- **`sgame status <id>`** - View the live game board and turn state
+- **`sgame leave <id>`** - Leave a lobby or forfeit an active game
+- **`sgame cancel <id>`** - Cancel a lobby or active game as the host
 
 ### 🆕 API-Powered Commands:
 - **`scat`** - Get a random cat picture from TheCatAPI 🐱📸
@@ -33,8 +44,10 @@ A fun and interactive Discord bot with random quotes, greetings, birthday wishes
 - **`skiss`** - Send virtual kisses (10 GIFs)
 - **`shug`** - Give warm hugs (10 GIFs)
 - **`sfight`** - Battle mode! (10 GIFs)
+- **`sgoodnight`**, **`spardon`**, **`ssorry`**, **`sthankyou`**, **`sugh`**, **`syass`**, and many more
+- Type **`shelp`** in Discord to see the full live sticker list from the bot
 
-**Total Content:** 40 quotes + 35 greetings + 25 jokes + 12 birthday messages + 30 memes + 120 sticker GIFs + **∞ Live API content** = **262+ unique responses!**
+**Total Content:** 40 quotes + 35 greetings + 121 jokes + 12 birthday messages + 30 memes + 195 sticker GIFs + **∞ Live API content** = **433+ unique responses!**
 
 ## Setup Instructions 🛠️
 
@@ -98,6 +111,15 @@ knock knock
 smeme
 → [Random funny meme GIF]
 
+shelp
+→ [Command list embed with all text, API, and sticker commands]
+
+sgames
+→ [Game overview embed with supported games and any lobbies in the current channel]
+
+sgame create tictactoe
+→ [Creates a lobby and returns a game ID like g001]
+
 sdance
 → [Dancing GIF]
 ```
@@ -133,10 +155,11 @@ speedyuwu/
 ├── data/               # JSON data files (easy to edit!)
 │   ├── quotes.json     # 40 speed quotes
 │   ├── greetings.json  # 35 cat greetings
-│   ├── jokes.json      # 25 knock-knock jokes
+│   ├── jokes.json      # 121 knock-knock jokes
 │   ├── birthday.json   # 12 birthday messages
 │   ├── memes.json      # 30 meme GIF URLs
-│   └── stickers.json   # 120 sticker GIFs (12 categories × 10)
+│   └── stickers.json   # 195 sticker GIFs (85 categories)
+├── game lobbies        # In-memory multiplayer games with per-game IDs
 ├── .env                # Bot token (create this)
 ├── requirements.txt    # Python dependencies
 └── README.md           # This file
@@ -233,6 +256,10 @@ Edit `data/stickers.json`:
 
 To add completely new commands, edit `bot.py` and add new conditions in the `on_message` event handler.
 
+For sticker-only additions, you usually just need to add a new `s...` key in `data/stickers.json`. The `shelp` command reads from that file automatically.
+
+For games, add a new entry to the game catalog in `bot.py`. The lobby system is ID-based, so multiple games can run at the same time in the same channel or different channels.
+
 ## Troubleshooting 🔧
 
 ### Bot is offline:
@@ -248,8 +275,8 @@ To add completely new commands, edit `bot.py` and add new conditions in the `on_
 ### GIFs not displaying:
 - Ensure bot has "Embed Links" permission
 - Check if GIF URLs are still valid (test in browser)
-- Use valid Tenor URL format: `https://media1.tenor.com/m/[ID]/[name].gif`
-- Avoid old/broken placeholder URLs
+- Use Giphy CDN URLs such as `https://media.giphy.com/media/[ID]/giphy.gif`
+- Some newer sticker entries also use direct `giphy.gif`, `giphy.webp`, or `200.webp` CDN variants
 
 ### JSON Loading Errors:
 - Check JSON syntax is valid (use [jsonlint.com](https://jsonlint.com))
@@ -263,6 +290,11 @@ To add completely new commands, edit `bot.py` and add new conditions in the `on_
 - Bot will show error messages if APIs are unreachable
 - Each API call has a fallback error message
 - Try again after a few seconds if an API is temporarily down
+
+### Games not starting:
+- Make sure every participant joined the lobby before the host starts it
+- Use `sgame status <id>` to confirm the lobby ID and current players
+- Only players in the lobby can make moves once the game starts
 
 ### Bot Responding Multiple Times:
 - **Check for multiple bot instances:** Run `ps aux | grep bot.py`
@@ -279,7 +311,8 @@ To add completely new commands, edit `bot.py` and add new conditions in the `on_
 - **Meme GIFs:** 30 curated funny GIFs from Tenor
 - **Sticker GIFs:** 120 reaction GIFs (10 per category × 12 categories)
 - **🆕 API-Powered Content:** Unlimited cat pictures, facts, emojis, and jokes!
-- **Total Responses:** 262 static + ∞ API content!
+- **Multiplayer Games:** 4 lobby-based games with ID-based sessions
+- **Total Responses:** 262 static + ∞ API content, plus games!
 
 ## Technical Details 🔧
 

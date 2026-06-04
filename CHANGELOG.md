@@ -1,5 +1,75 @@
 # Changelog
 
+## Version 2.1.5 - Multiplayer Games (June 5, 2026)
+
+### 🎮 New Feature: ID-Based Game Lobbies
+- Added multiplayer game lobbies with per-game IDs so more than one game can run at once
+- Players join before the host starts the match, which prevents non-participants from interfering
+- Only joined players can make moves once a game is active
+
+### ✨ Supported Games
+- **`tictactoe`** - 2-player board game
+- **`connect4`** - 2-player connect-four
+- **`nim`** - 2-player stone-taking game
+- **`guessnumber`** - 1-6 player number guessing game
+
+### 🧾 Command Additions
+- **`sgames`** - Game overview and active lobbies
+- **`sgame create <game>`** - Create a new game lobby
+- **`sgame join <id>`** - Join a lobby before it starts
+- **`sgame start <id>`** - Start a lobby as host
+- **`sgame move <id> <move>`** - Make a move in the active game
+- **`sgame status <id>`** - Show live game state
+- **`sgame leave <id>`** - Leave or forfeit a game
+- **`sgame cancel <id>`** - Cancel a lobby or game as host
+
+### 📝 Documentation Updates
+- Updated README with the new multiplayer workflow
+- Added the game system to `shelp` output
+
+---
+
+## Version 2.1.4 - Joke Expansion (June 5, 2026)
+
+### ✨ Content Update
+- Expanded the `knock knock` library from 25 jokes to 121 jokes
+- Added a large new batch of classic and pun-based knock-knock jokes to `data/jokes.json`
+- Kept the existing file format so the command continues working without code changes
+
+### 📊 Updated Totals
+- **Knock-knock jokes:** 121
+- **Static responses:** 433+
+
+### 📝 Documentation Updates
+- Updated README joke counts and overall response totals
+- Updated project structure docs to reflect the larger joke dataset
+
+---
+
+## Version 2.1.3 - Sticker Expansion (June 5, 2026)
+
+### ✨ New Features
+- Added `shelp` command to show all core, API, and sticker commands in Discord
+- Expanded sticker library from 12 categories to 85 commands
+- Added 75 new sticker command shortcuts using the requested `s...` naming pattern
+
+### 🎨 Sticker Additions
+- Added new reactions like `sgoodnight`, `spardon`, `ssorry`, `sthankyou`, `syass`, `sgoodjob`, `sready`, and many more
+- Merged repeated reaction intents cleanly where useful, such as `shi`
+- Kept sticker discovery dynamic so `shelp` always reflects `data/stickers.json`
+
+### 📊 Content Totals
+- **Sticker commands:** 85
+- **Sticker GIF URLs:** 195
+- **Static responses:** 337+
+
+### 📝 Documentation Updates
+- Updated README command list and content totals
+- Documented the new `shelp` helper command
+- Corrected GIF troubleshooting guidance to reference Giphy CDN URLs
+
+---
+
 ## Version 2.1.2 - GIF URL Migration (June 1, 2026)
 
 ### 🔥 Critical Fix: All GIF URLs Replaced
