@@ -1,4 +1,4 @@
-"""Open games: anybody in the channel can just type — no joining, no commands."""
+"""Open games: anybody in the channel can just type - no joining, no commands."""
 import io
 import math
 import random
@@ -65,7 +65,7 @@ class GuessNumber(OpenGame):
             title=f'{self.emoji} {self.title}',
             description=(
                 f"I'm thinking of a number between **1** and **{self.maximum}**.\n\n"
-                f'✍️ **Just type a number** — anyone in the channel can guess!\n'
+                f'✍️ **Just type a number** - anyone in the channel can guess!\n'
                 f'🎯 You have **{self.attempts}** guesses as a team.'
             ),
             color=PALETTE['teal'],
@@ -125,7 +125,7 @@ class GuessNumber(OpenGame):
 
     async def stop(self, by=None):
         self.teardown()
-        await self.channel.send(f'🏳️ Game over — the number was **{self.target}**.')
+        await self.channel.send(f'🏳️ Game over - the number was **{self.target}**.')
 
 
 class Hangman(OpenGame):
@@ -151,7 +151,7 @@ class Hangman(OpenGame):
         data = images.hangman_image(self.pattern(), self.wrong, self.MAX_LIVES, self.category, state)
         file = png_file(data, 'hangman.png', f'Hangman: {self.pattern()}')
         color = {'playing': PALETTE['purple'], 'won': PALETTE['green'], 'lost': PALETTE['red']}[state]
-        embed = discord.Embed(title=f'{self.emoji} Hangman', description=description or 'Type a **letter** — or guess the **whole word**!', color=color)
+        embed = discord.Embed(title=f'{self.emoji} Hangman', description=description or 'Type a **letter** - or guess the **whole word**!', color=color)
         embed.set_image(url='attachment://hangman.png')
         if state == 'playing':
             embed.set_footer(text=f'{len(self.word)} letters • category: {self.category} • anyone can guess')
@@ -208,7 +208,7 @@ class Hangman(OpenGame):
 
     async def stop(self, by=None):
         self.teardown()
-        await self.channel.send(f'🏳️ Hangman stopped — the word was **{self.word.upper()}**.')
+        await self.channel.send(f'🏳️ Hangman stopped - the word was **{self.word.upper()}**.')
 
 
 def wordle_score(guess, answer):
@@ -240,10 +240,10 @@ class Wordle(OpenGame):
         data = images.wordle_image(self.rows, self.scores, self.ROWS, self.LENGTH)
         file = png_file(data, 'wordle.png', 'Wordle board')
         color = {'playing': PALETTE['green'], 'won': PALETTE['gold'], 'lost': PALETTE['red']}[state]
-        history = '\n'.join(f'`{index}.` **{word.upper()}** — {who.display_name}' for index, (word, who) in enumerate(zip(self.rows, self.guessers), start=1))
+        history = '\n'.join(f'`{index}.` **{word.upper()}** - {who.display_name}' for index, (word, who) in enumerate(zip(self.rows, self.guessers), start=1))
         embed = discord.Embed(
             title=f'{self.emoji} Wordle',
-            description=(description or 'Guess the **5-letter word** in 6 tries. Just type a word — anyone can guess!\n🟩 right spot · 🟨 wrong spot · ⬛ not in word')
+            description=(description or 'Guess the **5-letter word** in 6 tries. Just type a word - anyone can guess!\n🟩 right spot · 🟨 wrong spot · ⬛ not in word')
             + (f'\n\n{history}' if history else ''),
             color=color,
         )
@@ -287,4 +287,4 @@ class Wordle(OpenGame):
 
     async def stop(self, by=None):
         self.teardown()
-        await self.channel.send(f'🏳️ Wordle stopped — the word was **{self.answer.upper()}**.')
+        await self.channel.send(f'🏳️ Wordle stopped - the word was **{self.answer.upper()}**.')

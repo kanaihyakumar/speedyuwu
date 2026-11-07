@@ -646,7 +646,7 @@ def surd_add(r, level):
     big, small = a * a * n, b * b * n
     if r.random() < 0.5 or level == 1:
         return Question('surds', f'Simplify √{big} + √{small}', 'surd', (Fraction(a + b), n), surd_str(a + b, n),
-                        'Simplify each surd first — then they are "like" surds.', level=level)
+                        'Simplify each surd first - then they are "like" surds.', level=level)
     if a == b:
         a += 1
         big = a * a * n

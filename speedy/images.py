@@ -180,7 +180,7 @@ def hangman_image(pattern, wrong_letters, max_lives, category, state='playing'):
         size -= 4
     draw.text((320, 150), spaced, font=font(size, True), fill=(255, 255, 255))
     draw.text((320, 280), f'Lives: {max_lives - len(wrong_letters)} / {max_lives}', font=font(28, True), fill=(255, 220, 120))
-    wrong = ' '.join(sorted(letter.upper() for letter in wrong_letters)) or '—'
+    wrong = ' '.join(sorted(letter.upper() for letter in wrong_letters)) or '-'
     draw.text((320, 330), f'Wrong: {wrong}', font=font(26), fill=(255, 255, 255, 230))
     return to_file_bytes(image)
 

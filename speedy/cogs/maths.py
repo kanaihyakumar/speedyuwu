@@ -54,7 +54,7 @@ class MathMenu(discord.ui.View):
         value = interaction.data['values'][0]
         busy = self.cog.bot.sessions.get(interaction.channel.id)
         if busy:
-            return await interaction.response.send_message(f'⏳ **{busy.title}** is already running here — `sstop` ends it.', ephemeral=True)
+            return await interaction.response.send_message(f'⏳ **{busy.title}** is already running here - `sstop` ends it.', ephemeral=True)
         await interaction.response.send_message(f'🧮 Starting {"a mixed round" if value == "mix" else TOPICS[value].title} on {LEVEL_NAMES[self.level]}!', ephemeral=True)
         await self.cog.start_quiz(interaction.channel, interaction.user, None if value == 'mix' else value, self.level, 5)
 
@@ -94,7 +94,7 @@ class MathCog(commands.Cog, name='Maths'):
     def menu_embed(self):
         embed = discord.Embed(
             title='🧮 Speedyuwu Maths Lab',
-            description=('Pick a topic below — the question appears as a picture card and **you just type the answer**.\n'
+            description=('Pick a topic below - the question appears as a picture card and **you just type the answer**.\n'
                          'First correct answer wins the round. Exact surds (`3√2`), fractions (`3/4`), `π`, and `x^2+5x+6` all work!'),
             color=PALETTE['pink'],
         )
@@ -102,8 +102,8 @@ class MathCog(commands.Cog, name='Maths'):
             embed.add_field(name=f'{topic.emoji} {topic.title}', value=f'{topic.blurb}\n`s{topic.key}`', inline=True)
         embed.add_field(
             name='How to start',
-            value=('`smath` — this menu\n`smath surds hard 10` — topic, difficulty (`easy`/`medium`/`hard`) and rounds\n'
-                   '`smath mix` — random mix\n`scalc 3√2 × 4` — calculator\n`sfactor 360` — prime factors'),
+            value=('`smath` - this menu\n`smath surds hard 10` - topic, difficulty (`easy`/`medium`/`hard`) and rounds\n'
+                   '`smath mix` - random mix\n`scalc 3√2 × 4` - calculator\n`sfactor 360` - prime factors'),
             inline=False,
         )
         return embed

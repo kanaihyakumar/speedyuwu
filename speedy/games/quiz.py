@@ -82,7 +82,7 @@ class RoundView(discord.ui.View):
 
 class RoundQuiz(Session):
     color = PALETTE['blurple']
-    intro = 'First correct answer wins each round — just type it in chat!'
+    intro = 'First correct answer wins each round - just type it in chat!'
 
     def __init__(self, bot, channel, host, rounds=5, **_):
         super().__init__(bot, channel, host)
@@ -105,9 +105,9 @@ class RoundQuiz(Session):
     async def start(self):
         if not await self.prepare():
             self.teardown()
-            await self.channel.send("⚠️ I couldn't load questions right now — please try again in a moment.")
+            await self.channel.send("⚠️ I couldn't load questions right now - please try again in a moment.")
             return
-        await self.channel.send(f'{self.emoji} **{self.title}** — **{self.total}** round{"s" if self.total != 1 else ""}! {self.intro}')
+        await self.channel.send(f'{self.emoji} **{self.title}** - **{self.total}** round{"s" if self.total != 1 else ""}! {self.intro}')
         await self.advance()
 
     async def advance(self):
@@ -121,7 +121,7 @@ class RoundQuiz(Session):
         self.round_no += 1
         rnd = await self.make_round(self.round_no)
         if rnd is None:
-            await self.channel.send("⚠️ Couldn't load the next question — wrapping up.")
+            await self.channel.send("⚠️ Couldn't load the next question - wrapping up.")
             return await self.finish_quiz()
         hint = 'tap A-D or type the letter' if rnd.choices else 'type your answer'
         rnd.embed.set_footer(text=f'Round {self.round_no}/{self.total} • ⏱ {rnd.seconds}s • {hint}')
@@ -189,7 +189,7 @@ class RoundQuiz(Session):
                 return await ephemeral(interaction, '🔒 You already answered this one.')
             if index != rnd.correct_index:
                 rnd.locked.add(interaction.user.id)
-                return await ephemeral(interaction, '❌ Not quite — you are locked out of this round.')
+                return await ephemeral(interaction, '❌ Not quite - you are locked out of this round.')
             rnd.done = True
         await interaction.response.defer()
         await self.score_round(rnd, interaction.user)
@@ -210,7 +210,7 @@ class RoundQuiz(Session):
 
     async def round_over(self, rnd, winner, points=0, skipped=False):
         if winner:
-            embed = discord.Embed(title='✅ Correct!', description=f'**{winner.display_name}** got it — **+{points} pts**', color=PALETTE['green'])
+            embed = discord.Embed(title='✅ Correct!', description=f'**{winner.display_name}** got it - **+{points} pts**', color=PALETTE['green'])
         elif skipped:
             embed = discord.Embed(title='⏭️ Skipped', color=PALETTE['orange'])
         else:
@@ -233,17 +233,17 @@ class RoundQuiz(Session):
 
     async def finish_quiz(self):
         ranking = sorted(self.scores.items(), key=lambda item: item[1], reverse=True)
-        embed = discord.Embed(title=f'🏁 {self.title} — final scores', color=PALETTE['gold'])
+        embed = discord.Embed(title=f'🏁 {self.title} - final scores', color=PALETTE['gold'])
         if not ranking:
-            embed.description = 'No points this time — try again with `splay`!'
+            embed.description = 'No points this time - try again with `splay`!'
         else:
             lines = []
             for place, (user_id, points) in enumerate(ranking[:10]):
                 medal = MEDALS[place] if place < 3 else f'`{place + 1}.`'
-                lines.append(f'{medal} {self.users[user_id].mention} — **{points}** pts')
+                lines.append(f'{medal} {self.users[user_id].mention} - **{points}** pts')
                 self.award(self.users[user_id], points, place == 0)
             embed.description = '\n'.join(lines)
-            embed.set_footer(text='Points are added to your XP — check sprofile!')
+            embed.set_footer(text='Points are added to your XP - check sprofile!')
         self.teardown()
         await self.channel.send(embed=embed)
 

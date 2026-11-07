@@ -115,7 +115,7 @@ async def fetch_advice():
 async def fetch_zen_quote():
     data = await get_json('https://zenquotes.io/api/random')
     try:
-        return f"“{data[0]['q']}”\n— {data[0]['a']}"
+        return f"“{data[0]['q']}”\n- {data[0]['a']}"
     except Exception:
         return None
 

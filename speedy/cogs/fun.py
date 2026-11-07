@@ -101,7 +101,7 @@ class WyrView(discord.ui.View):
         for index, text in enumerate(self.options):
             bar = '█' * round(counts[index] / total * 10) + '░' * (10 - round(counts[index] / total * 10))
             embed.add_field(name=f'{"🅰️" if index == 0 else "🅱️"} {text}', value=f'`{bar}` {counts[index]} vote{"s" if counts[index] != 1 else ""}', inline=False)
-        embed.set_footer(text='Tap a button to vote — you can change your mind!')
+        embed.set_footer(text='Tap a button to vote - you can change your mind!')
         return embed
 
 
@@ -215,7 +215,7 @@ class FunCog(commands.Cog, name='Fun'):
     @commands.cooldown(1, 3, commands.BucketType.user)
     async def sgif(self, ctx, *, query: str = ''):
         if not query.strip():
-            return await ctx.send('Usage: `sgif <what you want>` — e.g. `sgif happy dance`')
+            return await ctx.send('Usage: `sgif <what you want>` - e.g. `sgif happy dance`')
         result = await api.fetch_giphy(query.strip())
         if result == 'no-key':
             return await ctx.send('🔑 `sgif` needs a free GIPHY key. Add `GIPHY_API_KEY=...` to the `.env` file (get one at developers.giphy.com).')

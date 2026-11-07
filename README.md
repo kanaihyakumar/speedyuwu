@@ -22,12 +22,12 @@ Type **`splay`** for a menu with a dropdown, or start any game with its one-word
 | `sc4` / `sc4 @friend` | 🔴 Connect 4 | Tap a column, or just type `1`-`7` (colourful board image) |
 | `snim` / `snim @friend` | 🪨 Nim (21 stones) | Tap *Take 1/2/3*, or type `1`-`3` |
 | `srps` / `srps @friend` | ✌️ Rock Paper Scissors | Secret button picks, best of 3 |
-| `sguess` (`sguess hard`, `sguess 500`) | 🔢 Guess the Number | Everyone just types numbers — hot/cold hints, shrinking range |
+| `sguess` (`sguess hard`, `sguess 500`) | 🔢 Guess the Number | Everyone just types numbers - hot/cold hints, shrinking range |
 | `shangman` (`shangman animals`) | 🪢 Hangman | Type a letter or the whole word (drawn gallows image) |
 | `swordle` | 🟩 Wordle | Type any 5-letter word (coloured tile image) |
 | `sscramble` | 🔤 Word Scramble | Type the unscrambled word |
 | `sriddle` | 🕵️ Riddles | Type the answer |
-| `strivia` (`strivia science hard 10`) | 🧠 Trivia | Tap A-D (or type the letter) — thousands of questions |
+| `strivia` (`strivia science hard 10`) | 🧠 Trivia | Tap A-D (or type the letter) - thousands of questions |
 | `sflag` | 🏳️ Guess the Flag | Type the country name |
 | `spokequiz` | ⚡ Who's That Pokémon? | Type the name of the silhouette |
 
@@ -36,12 +36,12 @@ Type **`splay`** for a menu with a dropdown, or start any game with its one-word
 - **Win to earn XP.** `sprofile` shows your XP card (level, rank, wins), `sboard` shows the leaderboard.
 
 ### 🧮 Maths Lab
-**`smath`** opens a menu: pick a topic and difficulty, and each question appears as a colourful picture card (triangle diagrams included). **Just type the answer** — first correct answer wins the round, with a 💡 Hint button.
+**`smath`** opens a menu: pick a topic and difficulty, and each question appears as a colourful picture card (triangle diagrams included). **Just type the answer** - first correct answer wins the round, with a 💡 Hint button.
 
 - **14 topics:** `salgebra` · `squadratics` · `ssurds` · `strig` · `sindices` · `slogs` · `sgeometry` · `ssequences` · `scalculus` · `sstats` · `sfractions` · `sarithmetic` · `snumbers` · `svectors`
 - Options: `smath surds hard 10` (topic, `easy`/`medium`/`hard`, number of rounds) or `smath mix`
 - Answers are understood flexibly: `3√2`, `sqrt(3)/2`, `5π/6`, `3/4`, `x^2+5x+6`, `2, 3`, `x=1, y=2`
-- **`scalc 3√2 × 4`** — calculator (understands `√`, `π`, `sin(30°)`, `5!`, `%`), **`sfactor 360`** — prime factors & divisors
+- **`scalc 3√2 × 4`** - calculator (understands `√`, `π`, `sin(30°)`, `5!`, `%`), **`sfactor 360`** - prime factors & divisors
 
 ### 🎉 More Fun
 - **GIF reactions:** `shug @friend`, `spat`, `sslap`, `sbonk`, `shighfive`, … 30+ actions (anime GIFs from nekos.best). The person you tag gets a **↩️ back** button.
@@ -51,7 +51,7 @@ Type **`splay`** for a menu with a dropdown, or start any game with its one-word
 - **Party tools:** `sflip`, `sroll 2d6`, `s8ball <question>`, `schoose a, b, c`, `swyr` (live-voting would-you-rather), `struth`, `sdare`
 
 ### ❓ Help
-- **`shelp`** — categorised help with a dropdown (`shelp games`, `shelp math`, `shelp fun`, `shelp gifs`)
+- **`shelp`** - categorised help with a dropdown (`shelp games`, `shelp math`, `shelp fun`, `shelp gifs`)
 
 ### 🆕 API-Powered Commands:
 - **`scat`** - Get a random cat picture from TheCatAPI 🐱📸
@@ -144,7 +144,7 @@ shelp
 → [Command list embed with all text, API, and sticker commands]
 
 splay
-→ [Game menu with a dropdown — pick a game and it starts instantly]
+→ [Game menu with a dropdown - pick a game and it starts instantly]
 
 sguess
 → 🔢 I'm thinking of a number between 1 and 100… just type your guess!
@@ -152,7 +152,7 @@ sguess
 → 📈 Higher! ♨️ hot · range 24–100 · 8 guesses left
 
 smath surds
-→ [Picture card: "Simplify √72"]   — then just type:  6√2
+→ [Picture card: "Simplify √72"]   - then just type:  6√2
 
 sdance
 → [Dancing GIF]
@@ -299,7 +299,7 @@ To add completely new commands, edit `bot.py` and add new conditions in the `on_
 
 For sticker-only additions, you usually just need to add a new `s...` key in `data/stickers.json`. The `shelp` command reads from that file automatically.
 
-For games, write a `Session` subclass (see `speedy/games/`) and add a `GameSpec` entry to `GAMES` in `speedy/cogs/games.py` — the one-word command, menu entry, natural `play <game>` phrase and help text are generated from it. For new maths topics, add generator functions and a `Topic` entry in `speedy/mathgen.py`; the topic command, menu and tests pick it up automatically.
+For games, write a `Session` subclass (see `speedy/games/`) and add a `GameSpec` entry to `GAMES` in `speedy/cogs/games.py` - the one-word command, menu entry, natural `play <game>` phrase and help text are generated from it. For new maths topics, add generator functions and a `Topic` entry in `speedy/mathgen.py`; the topic command, menu and tests pick it up automatically.
 
 ## Troubleshooting 🔧
 
@@ -333,7 +333,7 @@ For games, write a `Session` subclass (see `speedy/games/`) and add a `GameSpec`
 - Try again after a few seconds if an API is temporarily down
 
 ### Games not starting or not reacting:
-- Only one game can run per channel — type `sstop` to end the current one
+- Only one game can run per channel - type `sstop` to end the current one
 - Typed moves (`5`, `a`, `crane`) are only read while a game is running in that channel
 - The bot needs the permissions **Send Messages, Embed Links, Attach Files, Add Reactions** and **Read Message History** (Manage Messages is not required)
 - Idle games close automatically after 15 minutes

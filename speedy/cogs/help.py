@@ -1,4 +1,4 @@
-"""`shelp` — a categorised help menu with a dropdown."""
+"""`shelp` - a categorised help menu with a dropdown."""
 import discord
 from discord.ext import commands
 
@@ -39,24 +39,24 @@ def build_section(section, bot):
     embed = discord.Embed(title=f'{emoji} {title}', color=PALETTE['blurple'])
 
     if section == 'home':
-        embed.title = '🚀 Speedyuwu — Help'
+        embed.title = '🚀 Speedyuwu - Help'
         embed.description = (
             "Everything is **one short word**. No long commands, no IDs.\n"
             "Pick a category from the dropdown below, or try these:"
         )
-        embed.add_field(name='🎮 Games', value='`splay` — menu with buttons\n`sguess` `sttt` `swordle` `strivia` — start any game by name\nMoves are just **numbers or words** you type!', inline=False)
-        embed.add_field(name='🧮 Maths', value='`smath` — pick a topic, type the answer\n`smath surds hard` • `salgebra` • `strig`', inline=False)
-        embed.add_field(name='🎉 Fun', value='`sdog` `sfox` `sfact` `swyr` `spokemon pikachu`\n`shug @friend` — send a GIF hug!', inline=False)
-        embed.add_field(name='📊 Progress', value='`sprofile` — your XP card • `sboard` — leaderboard • `sstop` — end the current game', inline=False)
-        embed.set_footer(text='Tip: games run one per channel — everyone in the channel can join in!')
+        embed.add_field(name='🎮 Games', value='`splay` - menu with buttons\n`sguess` `sttt` `swordle` `strivia` - start any game by name\nMoves are just **numbers or words** you type!', inline=False)
+        embed.add_field(name='🧮 Maths', value='`smath` - pick a topic, type the answer\n`smath surds hard` • `salgebra` • `strig`', inline=False)
+        embed.add_field(name='🎉 Fun', value='`sdog` `sfox` `sfact` `swyr` `spokemon pikachu`\n`shug @friend` - send a GIF hug!', inline=False)
+        embed.add_field(name='📊 Progress', value='`sprofile` - your XP card • `sboard` - leaderboard • `sstop` - end the current game', inline=False)
+        embed.set_footer(text='Tip: games run one per channel - everyone in the channel can join in!')
     elif section == 'games':
-        embed.description = 'Start with a **one-word command**. Then just type your move — numbers for boards, letters/words for word games.'
+        embed.description = 'Start with a **one-word command**. Then just type your move - numbers for boards, letters/words for word games.'
         for heading, kind in [('⚔️ 2 players (friend or bot)', 'versus'), ('👥 Everyone plays', 'open'), ('🧠 Quizzes', 'quiz')]:
             lines = [f'{spec.emoji} **{spec.title}**\n`{spec.usage}`' for spec in GAMES if spec.kind == kind]
             embed.add_field(name=heading, value='\n'.join(lines), inline=False)
         embed.add_field(name='Controls', value='`splay` menu • `sstop` end game • `sprofile` XP card • `sboard` leaderboard', inline=False)
     elif section == 'math':
-        embed.description = 'Questions appear as picture cards. **Just type the answer** — first correct answer wins the round!'
+        embed.description = 'Questions appear as picture cards. **Just type the answer** - first correct answer wins the round!'
         for topic in TOPICS.values():
             embed.add_field(name=f'{topic.emoji} {topic.title}', value=f'`s{topic.key}`', inline=True)
         embed.add_field(
@@ -72,7 +72,7 @@ def build_section(section, bot):
         embed.add_field(name='⚡ Pokédex', value='`spokemon pikachu` • `spokemon` for a random one', inline=False)
         embed.add_field(name='🎲 Tools & party', value='`sflip` `sroll 2d6` `s8ball <question>` `schoose a, b, c` `swyr` `struth` `sdare` `sping`', inline=False)
     elif section == 'gifs':
-        embed.description = '`s<action> @friend` sends an anime GIF — and they get a button to react back! Without a mention it is just you.'
+        embed.description = '`s<action> @friend` sends an anime GIF - and they get a button to react back! Without a mention it is just you.'
         for index, piece in enumerate(chunk([f's{action}' for action in ACTIONS])):
             embed.add_field(name='Reactions' if index == 0 else 'More', value=piece, inline=False)
         for index, piece in enumerate(chunk(sorted(bot.sticker_names))):

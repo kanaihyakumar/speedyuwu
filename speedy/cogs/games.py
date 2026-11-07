@@ -51,10 +51,10 @@ def _math(bot, channel, user, args, opponent):
 TRIVIA_IDS = quiz.TRIVIA_CATEGORIES
 
 GAMES = [
-    GameSpec('ttt', 'Tic Tac Toe', '❌', 'Classic 3×3 — tap a square or type 1-9.', 'versus',
+    GameSpec('ttt', 'Tic Tac Toe', '❌', 'Classic 3×3 - tap a square or type 1-9.', 'versus',
              lambda bot, ch, u, a, o: versus.TicTacToe(bot, ch, u, opponent=o), ('sttt', 'stictactoe'),
              ('ttt', 'tictactoe', 'tic-tac-toe', 'xo'), 'sttt  or  sttt @friend'),
-    GameSpec('c4', 'Connect 4', '🔴', 'Drop discs, connect four — tap a column or type 1-7.', 'versus',
+    GameSpec('c4', 'Connect 4', '🔴', 'Drop discs, connect four - tap a column or type 1-7.', 'versus',
              lambda bot, ch, u, a, o: versus.ConnectFour(bot, ch, u, opponent=o), ('sc4', 'sconnect4'),
              ('c4', 'connect4', 'connectfour', 'connect'), 'sc4  or  sc4 @friend'),
     GameSpec('nim', 'Nim (21 Stones)', '🪨', 'Take 1-3 stones; last stone wins.', 'versus',
@@ -73,7 +73,7 @@ GAMES = [
     GameSpec('scramble', 'Word Scramble', '🔤', 'Unscramble the word before time runs out.', 'quiz',
              lambda bot, ch, u, a, o: quiz.ScrambleQuiz(bot, ch, u, rounds=_rounds(a)), ('sscramble',),
              ('scramble', 'unscramble', 'jumble'), 'sscramble  •  sscramble 10'),
-    GameSpec('riddle', 'Riddles', '🕵️', 'Brain teasers — type the answer.', 'quiz',
+    GameSpec('riddle', 'Riddles', '🕵️', 'Brain teasers - type the answer.', 'quiz',
              lambda bot, ch, u, a, o: quiz.RiddleQuiz(bot, ch, u, rounds=_rounds(a)), ('sriddle',), ('riddle', 'riddles'), 'sriddle'),
     GameSpec('trivia', 'Trivia', '🧠', 'Multiple choice from thousands of questions.', 'quiz', _trivia, ('strivia', 'squiz'),
              ('trivia', 'quiz'), 'strivia  •  strivia science hard 10'),
@@ -82,7 +82,7 @@ GAMES = [
     GameSpec('pokemon', "Who's That Pokémon?", '⚡', 'Guess the silhouette (Gen 1-3).', 'quiz',
              lambda bot, ch, u, a, o: quiz.PokemonQuiz(bot, ch, u, rounds=_rounds(a)), ('spokequiz', 'swtp'),
              ('pokemon', 'poke', 'pokequiz', 'wtp'), 'spokequiz'),
-    GameSpec('math', 'Maths', '🧮', 'Algebra, surds, trig, calculus & more — 14 topics.', 'quiz', _math, ('smathquiz',),
+    GameSpec('math', 'Maths', '🧮', 'Algebra, surds, trig, calculus & more - 14 topics.', 'quiz', _math, ('smathquiz',),
              ('math', 'maths'), 'smath  •  smath surds hard'),
 ]
 BY_ALIAS = {}
@@ -111,7 +111,7 @@ class GamePicker(discord.ui.View):
             return await self.cog.bot.get_cog('Maths').send_menu(interaction.channel)
         busy = self.cog.bot.sessions.get(interaction.channel.id)
         if busy:
-            return await interaction.response.send_message(f'⏳ **{busy.title}** is already running here — type `sstop` to end it.', ephemeral=True)
+            return await interaction.response.send_message(f'⏳ **{busy.title}** is already running here - type `sstop` to end it.', ephemeral=True)
         await interaction.response.send_message(f'{spec.emoji} Starting **{spec.title}**!', ephemeral=True)
         await self.cog.launch(interaction.channel, interaction.user, spec, [], None)
 
@@ -172,16 +172,16 @@ class GamesCog(commands.Cog, name='Games'):
     def menu_embed(self):
         embed = discord.Embed(
             title='🎮 Speedyuwu Arcade',
-            description='Starting a game is **one word**. Moves are just numbers or words — no long commands!',
+            description='Starting a game is **one word**. Moves are just numbers or words - no long commands!',
             color=PALETTE['blurple'],
         )
         groups = [
-            ('⚔️ 2 players — challenge a friend or play the bot', 'versus'),
-            ('👥 Everyone plays — just type in chat', 'open'),
-            ('🧠 Quiz time — first right answer wins', 'quiz'),
+            ('⚔️ 2 players - challenge a friend or play the bot', 'versus'),
+            ('👥 Everyone plays - just type in chat', 'open'),
+            ('🧠 Quiz time - first right answer wins', 'quiz'),
         ]
         for heading, kind in groups:
-            lines = [f'{spec.emoji} **{spec.title}** — `{spec.commands[0]}`\n┗ {spec.blurb}' for spec in GAMES if spec.kind == kind]
+            lines = [f'{spec.emoji} **{spec.title}** - `{spec.commands[0]}`\n┗ {spec.blurb}' for spec in GAMES if spec.kind == kind]
             embed.add_field(name=heading, value='\n'.join(lines), inline=False)
         embed.add_field(
             name='Handy',
@@ -209,7 +209,7 @@ class GamesCog(commands.Cog, name='Games'):
             spec = find_game(words[1])
             return await self.launch(ctx.channel, ctx.author, spec, words[2:], self.opponent_from(ctx.message))
         await ctx.send('✨ Games got way easier! Just type `splay` for the menu, or a one-word start like `sguess`, `sttt` or `swordle`. '
-                       'Moves are just numbers or words — no game IDs needed.')
+                       'Moves are just numbers or words - no game IDs needed.')
 
     @commands.command(name='sstop', aliases=['sendgame', 'squit'])
     async def sstop(self, ctx):
@@ -228,7 +228,7 @@ class GamesCog(commands.Cog, name='Games'):
         entry = self.bot.scores.get(member.id)
         if not entry:
             who = 'You have' if member == ctx.author else f'{member.display_name} has'
-            return await ctx.send(f'🌱 {who} no XP yet — play a game with `splay` to get on the board!')
+            return await ctx.send(f'🌱 {who} no XP yet - play a game with `splay` to get on the board!')
         xp = entry['xp']
         level = level_for(xp)
         wins = entry.get('wins', {})
@@ -247,12 +247,12 @@ class GamesCog(commands.Cog, name='Games'):
     async def sboard(self, ctx):
         top = self.bot.scores.top(10)
         if not top:
-            return await ctx.send('🏜️ Nobody has scored yet. Be the first — type `splay`!')
+            return await ctx.send('🏜️ Nobody has scored yet. Be the first - type `splay`!')
         lines = []
         for place, (user_id, entry) in enumerate(top):
             medal = quiz.MEDALS[place] if place < 3 else f'`{place + 1}.`'
             level = level_for(entry['xp'])
-            lines.append(f"{medal} **{entry['name']}** — {entry['xp']} XP • Lv {level} {rank_for(level)}")
+            lines.append(f"{medal} **{entry['name']}** - {entry['xp']} XP • Lv {level} {rank_for(level)}")
         embed = discord.Embed(title='🏆 Speedyuwu Leaderboard', description='\n'.join(lines), color=PALETTE['gold'])
         embed.set_footer(text='Earn XP by winning games, quizzes and maths rounds')
         await ctx.send(embed=embed)

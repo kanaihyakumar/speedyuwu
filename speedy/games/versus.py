@@ -40,7 +40,7 @@ class GameView(discord.ui.View):
 
     async def interaction_check(self, interaction):
         if self.game.index_of(interaction.user.id) is None:
-            await ephemeral(interaction, '👀 You are spectating this one — start your own with `splay`!')
+            await ephemeral(interaction, '👀 You are spectating this one - start your own with `splay`!')
             return False
         return True
 
@@ -93,7 +93,7 @@ class VersusGame(Session):
             description=f'{self.host.mention} wants to play!\n\n{self.blurb}',
             color=self.color,
         )
-        embed.set_footer(text='Press ⚔️ Join & Play to take them on — or the host can play against the bot.')
+        embed.set_footer(text='Press ⚔️ Join & Play to take them on - or the host can play against the bot.')
         self.lobby_view = LobbyView(self)
         self.message = await self.channel.send(embed=embed, view=self.lobby_view)
 
@@ -101,7 +101,7 @@ class VersusGame(Session):
         if self.phase != 'lobby':
             return await ephemeral(interaction, 'That game already started.')
         if interaction.user.id == self.host.id:
-            return await ephemeral(interaction, 'You are the host 😄 — wait for a challenger, or press 🤖 Play vs Bot.')
+            return await ephemeral(interaction, 'You are the host 😄 - wait for a challenger, or press 🤖 Play vs Bot.')
         self.players = [self.host, interaction.user]
         self.lobby_view.stop()
         await self.begin(interaction)
@@ -281,7 +281,7 @@ class VersusGame(Session):
 
     def new_embed(self, final=False):
         color = PALETTE['gold'] if final else self.color
-        title = f'{self.emoji} {self.title}' + (' — Game over' if final else '')
+        title = f'{self.emoji} {self.title}' + (' - Game over' if final else '')
         embed = discord.Embed(title=title, color=color)
         if final:
             embed.description = (self.note + '\n' if self.note else '') + self.result_text()
@@ -352,7 +352,7 @@ class TicTacToe(VersusGame):
     key = 'ttt'
     title = 'Tic Tac Toe'
     emoji = '❌'
-    blurb = 'Get three in a row! Tap a square — or just type its number **1-9**.'
+    blurb = 'Get three in a row! Tap a square - or just type its number **1-9**.'
     color = PALETTE['pink']
     MARKS = ('X', 'O')
     ICONS = {'X': '❌', 'O': '⭕'}
@@ -430,7 +430,7 @@ class ConnectFour(VersusGame):
     key = 'c4'
     title = 'Connect 4'
     emoji = '🔴'
-    blurb = 'Drop discs and connect four! Tap a column — or just type **1-7**.'
+    blurb = 'Drop discs and connect four! Tap a column - or just type **1-7**.'
     color = PALETTE['sky']
     MARKS = ('R', 'Y')
     ICONS = {'R': '🔴', 'Y': '🟡'}
@@ -602,7 +602,7 @@ class RockPaperScissors(VersusGame):
                 return await ephemeral(interaction, '🔒 You already locked in this round.')
             self.picks[index] = choice
             self.touch()
-            await ephemeral(interaction, f'{RPS_ICONS[choice]} You picked **{choice}** — shhh, it is secret!')
+            await ephemeral(interaction, f'{RPS_ICONS[choice]} You picked **{choice}** - shhh, it is secret!')
             other = 1 - index
             if self.is_bot(self.players[other]):
                 self.picks[other] = self.bot_choice()
@@ -630,11 +630,11 @@ class RockPaperScissors(VersusGame):
     def build(self, final=False):
         embed = self.new_embed(final)
         if not final:
-            embed.description = f'**Round {self.round}** — pick your move! Choices stay secret until both players lock in.'
+            embed.description = f'**Round {self.round}** - pick your move! Choices stay secret until both players lock in.'
         lines = []
         for index, player in enumerate(self.players):
             status = '' if final else (' ✅ locked in' if index in self.picks else ' ⏳')
-            lines.append(f'{player.mention} — **{self.scores[index]}**{status}')
+            lines.append(f'{player.mention} - **{self.scores[index]}**{status}')
         embed.add_field(name='Score (first to 2)', value='\n'.join(lines), inline=False)
         file = None
         if self.last_round:
@@ -642,7 +642,7 @@ class RockPaperScissors(VersusGame):
             data = images.rps_banner(self.players[0].display_name, self.players[1].display_name, first, second)
             file = discord.File(io.BytesIO(data.getvalue()), filename='rps.png', description='Rock paper scissors result')
             embed.set_image(url='attachment://rps.png')
-            verdict = 'Tie — go again!' if winner is None else f'{self.players[winner].display_name} takes the round!'
+            verdict = 'Tie - go again!' if winner is None else f'{self.players[winner].display_name} takes the round!'
             embed.add_field(name='Last round', value=verdict, inline=False)
         view = None
         if not final:

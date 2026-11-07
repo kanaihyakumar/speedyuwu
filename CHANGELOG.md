@@ -18,7 +18,7 @@
 ### 🧮 Maths Lab
 - `smath` menu with 14 topics: arithmetic, fractions & percentages, algebra, quadratics, surds, indices, logarithms, trigonometry, geometry, sequences, calculus, statistics & probability, number theory, vectors & matrices
 - Three difficulty levels, picture question cards with triangle diagrams, hint/skip buttons
-- Safe, forgiving answer parser (`3√2`, `sqrt(3)/2`, `5π/6`, `3/4`, `x^2+5x+6`, `x=1, y=2`) — no `eval`
+- Safe, forgiving answer parser (`3√2`, `sqrt(3)/2`, `5π/6`, `3/4`, `x^2+5x+6`, `x=1, y=2`) - no `eval`
 - `scalc` calculator and `sfactor` prime factorisation
 
 ### 🎉 Fun & media
