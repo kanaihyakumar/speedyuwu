@@ -1,0 +1,32 @@
+{
+  "eightball": [
+    "It is certain. 🎱", "It is decidedly so. 🎱", "Without a doubt. 🎱", "Yes — definitely. 🎱", "You may rely on it. 🎱",
+    "As I see it, yes. 🎱", "Most likely. 🎱", "Outlook good. 🎱", "Signs point to yes. 🎱", "Reply hazy, try again. 🎱",
+    "Ask again later. 🎱", "Better not tell you now. 🎱", "Cannot predict now. 🎱", "Concentrate and ask again. 🎱",
+    "Don't count on it. 🎱", "My reply is no. 🎱", "My sources say no. 🎱", "Outlook not so good. 🎱", "Very doubtful. 🎱"
+  ],
+  "would_you_rather": [
+    ["Be able to fly", "Be invisible"], ["Never use social media again", "Never watch a movie again"],
+    ["Have unlimited pizza for life", "Have unlimited ice cream for life"], ["Be the fastest runner", "Be the smartest person"],
+    ["Live in space", "Live under the sea"], ["Talk to animals", "Speak every human language"],
+    ["Always be 10 minutes late", "Always be 20 minutes early"], ["Have a pet dragon", "Have a pet unicorn"],
+    ["Time travel to the past", "Time travel to the future"], ["Never do homework again", "Never take an exam again"],
+    ["Be a superhero", "Be a super-villain"], ["Teleport anywhere", "Read minds"],
+    ["Only eat sweet food", "Only eat salty food"], ["Have no internet for a month", "Have no phone for a week"],
+    ["Win the lottery", "Live twice as long"], ["Be famous", "Be rich and unknown"],
+    ["Have a rewind button for life", "Have a pause button for life"], ["Have super strength", "Have super speed"]
+  ],
+  "truths": [
+    "What's the most embarrassing thing you've ever done?", "What's a secret talent you have?", "What's your biggest fear?",
+    "What's the last lie you told?", "Which song do you secretly love but never admit?", "What's the weirdest dream you remember?",
+    "What's your most useless skill?", "Who was your first crush (initials only!)?", "What's the silliest thing you're afraid of?",
+    "What app do you spend the most time on?", "What's the worst gift you've ever received?", "What's your go-to karaoke song?"
+  ],
+  "dares": [
+    "Send a message using only emojis for the next 5 minutes.", "Type your next 3 messages with your elbows.",
+    "Change your nickname to something silly for 10 minutes.", "Do 10 jumping jacks and tell us when you're done!",
+    "Send the 5th photo in your gallery (keep it safe for work!).", "Speak in rhymes for the next 3 messages.",
+    "Compliment the last person who talked in this channel.", "Write a 2-line poem about pizza right now.",
+    "Describe your day using only movie titles.", "Say the alphabet backwards. Fast!", "Do your best impression of a cat — in text!"
+  ]
+}

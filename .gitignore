@@ -20,3 +20,7 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+
+# Bot runtime state (XP / leaderboard) and test caches
+.speedy/
+.pytest_cache/

@@ -1,5 +1,41 @@
 # Changelog
 
+## Version 3.0.0 - Easy Games, Maths Lab & Media (November 7, 2026)
+
+### 🎮 Games are now one word (breaking change)
+- Removed game IDs and `sgame create/join/start/move/...`. Start any game with one word (`sguess`, `sttt`, `swordle`, ...) or use `splay` for a dropdown menu
+- Moves are plain chat: type `23` to guess, `5` to place a mark, `a` for a hangman letter, `crane` for Wordle. Board games also have **buttons**
+- Two-player games open a lobby with **Join & Play** / **Play vs Bot** buttons; `sttt @friend` starts instantly. Natural phrases work too: `play wordle`
+- One game per channel, `sstop` to end it, idle games auto-close after 15 minutes
+- `sgame ...` still replies with a short "how to" so old habits are not confusing
+
+### 🆕 New games
+- Tic Tac Toe (button board, minimax bot), Connect 4 (image board, bot), Nim, Rock Paper Scissors (secret picks, best of 3)
+- Guess the Number (everyone guesses, hot/cold hints), Hangman (gallows image), Wordle (tile image), Word Scramble, Riddles
+- Trivia (Open Trivia DB, button answers), Guess the Flag (FlagCDN), Who's That Pokémon (PokéAPI silhouettes)
+- XP, levels, `sprofile` image card and `sboard` leaderboard (stored in `.speedy/scores.json`)
+
+### 🧮 Maths Lab
+- `smath` menu with 14 topics: arithmetic, fractions & percentages, algebra, quadratics, surds, indices, logarithms, trigonometry, geometry, sequences, calculus, statistics & probability, number theory, vectors & matrices
+- Three difficulty levels, picture question cards with triangle diagrams, hint/skip buttons
+- Safe, forgiving answer parser (`3√2`, `sqrt(3)/2`, `5π/6`, `3/4`, `x^2+5x+6`, `x=1, y=2`) — no `eval`
+- `scalc` calculator and `sfactor` prime factorisation
+
+### 🎉 Fun & media
+- 30 anime reaction GIF commands with a "back" button (`shug @friend`, `spat`, `sbonk`, ...)
+- `sdog`, `sfox`, `sduck`, `sreddit`, `snasa`, `sgif`, `sfact`, `sadvice`, `szen`, `sdadjoke`, `spokemon`
+- `sflip`, `sroll`, `s8ball`, `schoose`, `swyr` (live voting), `struth`, `sdare`, `sping`
+
+### ❓ Help
+- `shelp` is now categorised with a dropdown (`shelp games`, `shelp math`, `shelp fun`, `shelp gifs`)
+
+### 🔧 Under the hood
+- `bot.py` split into the `speedy/` package (cogs, games, images, maths engine), `commands.Bot` with case-insensitive prefix-less commands
+- Pillow added to requirements (images); pytest suite added (`requirements-dev.txt`)
+- Existing classic commands and all 85 sticker commands behave as before
+
+---
+
 ## Version 2.1.5 - Multiplayer Games (June 5, 2026)
 
 ### 🎮 New Feature: ID-Based Game Lobbies

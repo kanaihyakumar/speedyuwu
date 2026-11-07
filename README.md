@@ -1,6 +1,6 @@
 # Speedyuwu Discord Bot 🚀
 
-A fun and interactive Discord bot with random quotes, greetings, birthday wishes, jokes, memes, reaction stickers, and **live API integrations** for cat pictures, cat facts, emojis, and jokes! All content is stored in easy-to-edit JSON files for simple customization.
+A fun and interactive Discord bot with random quotes, greetings, birthday wishes, jokes, memes, reaction stickers, **12 easy-to-play games** (tap buttons or just type a number/word), a **14-topic maths trainer** (algebra, surds, trigonometry, calculus…), colourful picture cards, anime reaction GIFs and **live API integrations**! All content is stored in easy-to-edit JSON files for simple customization.
 
 ## Features ✨
 
@@ -12,17 +12,46 @@ A fun and interactive Discord bot with random quotes, greetings, birthday wishes
 
 ### Media Commands:
 - **`smeme`** - Get a random funny meme GIF (30 GIFs!)
-- **`shelp`** - Show all available commands, including sticker shortcuts
 
-### Multiplayer Games:
-- **`sgames`** - Show supported games and active lobbies in the current channel
-- **`sgame create <game>`** - Create a lobby for `tictactoe`, `connect4`, `nim`, or `guessnumber`
-- **`sgame join <id>`** - Join a lobby before it starts
-- **`sgame start <id>`** - Start the lobby as the host once enough players joined
-- **`sgame move <id> <move>`** - Make a move in the active game using the game ID
-- **`sgame status <id>`** - View the live game board and turn state
-- **`sgame leave <id>`** - Leave a lobby or forfeit an active game
-- **`sgame cancel <id>`** - Cancel a lobby or active game as the host
+### 🎮 Games (one word to start, then just type!)
+Type **`splay`** for a menu with a dropdown, or start any game with its one-word command. Only one game runs per channel; **`sstop`** ends it.
+
+| Type | Game | How you play |
+|------|------|--------------|
+| `sttt` / `sttt @friend` | ❌ Tic Tac Toe | Tap a square, or just type `1`-`9` |
+| `sc4` / `sc4 @friend` | 🔴 Connect 4 | Tap a column, or just type `1`-`7` (colourful board image) |
+| `snim` / `snim @friend` | 🪨 Nim (21 stones) | Tap *Take 1/2/3*, or type `1`-`3` |
+| `srps` / `srps @friend` | ✌️ Rock Paper Scissors | Secret button picks, best of 3 |
+| `sguess` (`sguess hard`, `sguess 500`) | 🔢 Guess the Number | Everyone just types numbers — hot/cold hints, shrinking range |
+| `shangman` (`shangman animals`) | 🪢 Hangman | Type a letter or the whole word (drawn gallows image) |
+| `swordle` | 🟩 Wordle | Type any 5-letter word (coloured tile image) |
+| `sscramble` | 🔤 Word Scramble | Type the unscrambled word |
+| `sriddle` | 🕵️ Riddles | Type the answer |
+| `strivia` (`strivia science hard 10`) | 🧠 Trivia | Tap A-D (or type the letter) — thousands of questions |
+| `sflag` | 🏳️ Guess the Flag | Type the country name |
+| `spokequiz` | ⚡ Who's That Pokémon? | Type the name of the silhouette |
+
+- **Two-player games** open a lobby with **⚔️ Join & Play** and **🤖 Play vs Bot** buttons. Mention a friend (`sttt @friend`) to start instantly.
+- You can also say it naturally: `play wordle`, `play ttt @friend`, `start trivia`.
+- **Win to earn XP.** `sprofile` shows your XP card (level, rank, wins), `sboard` shows the leaderboard.
+
+### 🧮 Maths Lab
+**`smath`** opens a menu: pick a topic and difficulty, and each question appears as a colourful picture card (triangle diagrams included). **Just type the answer** — first correct answer wins the round, with a 💡 Hint button.
+
+- **14 topics:** `salgebra` · `squadratics` · `ssurds` · `strig` · `sindices` · `slogs` · `sgeometry` · `ssequences` · `scalculus` · `sstats` · `sfractions` · `sarithmetic` · `snumbers` · `svectors`
+- Options: `smath surds hard 10` (topic, `easy`/`medium`/`hard`, number of rounds) or `smath mix`
+- Answers are understood flexibly: `3√2`, `sqrt(3)/2`, `5π/6`, `3/4`, `x^2+5x+6`, `2, 3`, `x=1, y=2`
+- **`scalc 3√2 × 4`** — calculator (understands `√`, `π`, `sin(30°)`, `5!`, `%`), **`sfactor 360`** — prime factors & divisors
+
+### 🎉 More Fun
+- **GIF reactions:** `shug @friend`, `spat`, `sslap`, `sbonk`, `shighfive`, … 30+ actions (anime GIFs from nekos.best). The person you tag gets a **↩️ back** button.
+- **Animals & pictures:** `sdog`, `sfox`, `sduck`, `sreddit` (fresh memes), `snasa` (space picture of the day), `sgif <query>` (needs a free `GIPHY_API_KEY`)
+- **Facts & words:** `sfact`, `sadvice`, `szen`, `sdadjoke`
+- **Pokédex:** `spokemon pikachu` (or just `spokemon` for a random one)
+- **Party tools:** `sflip`, `sroll 2d6`, `s8ball <question>`, `schoose a, b, c`, `swyr` (live-voting would-you-rather), `struth`, `sdare`
+
+### ❓ Help
+- **`shelp`** — categorised help with a dropdown (`shelp games`, `shelp math`, `shelp fun`, `shelp gifs`)
 
 ### 🆕 API-Powered Commands:
 - **`scat`** - Get a random cat picture from TheCatAPI 🐱📸
@@ -52,7 +81,7 @@ A fun and interactive Discord bot with random quotes, greetings, birthday wishes
 ## Setup Instructions 🛠️
 
 ### Prerequisites:
-- Python 3.8 or higher
+- Python 3.10 or higher
 - A Discord account
 - A Discord server where you have admin permissions
 
@@ -114,11 +143,16 @@ smeme
 shelp
 → [Command list embed with all text, API, and sticker commands]
 
-sgames
-→ [Game overview embed with supported games and any lobbies in the current channel]
+splay
+→ [Game menu with a dropdown — pick a game and it starts instantly]
 
-sgame create tictactoe
-→ [Creates a lobby and returns a game ID like g001]
+sguess
+→ 🔢 I'm thinking of a number between 1 and 100… just type your guess!
+23
+→ 📈 Higher! ♨️ hot · range 24–100 · 8 guesses left
+
+smath surds
+→ [Picture card: "Simplify √72"]   — then just type:  6√2
 
 sdance
 → [Dancing GIF]
@@ -151,18 +185,25 @@ schuck
 
 ```
 speedyuwu/
-├── bot.py              # Main bot code
-├── data/               # JSON data files (easy to edit!)
-│   ├── quotes.json     # 40 speed quotes
-│   ├── greetings.json  # 35 cat greetings
-│   ├── jokes.json      # 121 knock-knock jokes
-│   ├── birthday.json   # 12 birthday messages
-│   ├── memes.json      # 30 meme GIF URLs
-│   └── stickers.json   # 195 sticker GIFs (85 categories)
-├── game lobbies        # In-memory multiplayer games with per-game IDs
-├── .env                # Bot token (create this)
-├── requirements.txt    # Python dependencies
-└── README.md           # This file
+├── bot.py                  # Entry point: bot setup, chat routing, classic commands
+├── speedy/
+│   ├── core.py             # Data loading, SSL, XP/score store
+│   ├── api.py              # Free public APIs (cats, dogs, trivia, PokéAPI, nekos.best…)
+│   ├── images.py           # Pillow renderers: question cards, boards, hangman, wordle, profile
+│   ├── mathgen.py          # Maths question generators + safe answer parser/checker
+│   ├── session.py          # One-game-per-channel session manager
+│   ├── games/              # versus.py (2-player), solo.py (open games), quiz.py (round quizzes)
+│   └── cogs/               # help.py, games.py, maths.py, fun.py (the commands)
+├── data/                   # JSON content + fonts (easy to edit!)
+│   ├── quotes.json, greetings.json, jokes.json, birthday.json, memes.json, stickers.json
+│   ├── words.json          # Hangman / Wordle / Scramble word lists
+│   ├── riddles.json        # Riddle bank
+│   ├── fun.json            # 8-ball, would-you-rather, truth & dare
+│   └── fonts/              # DejaVu Sans (free licence) used for images
+├── tests/                  # pytest suite (maths + game logic)
+├── .env                    # Bot token (create this)
+├── requirements.txt        # Python dependencies
+└── README.md               # This file
 ```
 
 ## Customization 🎨
@@ -258,7 +299,7 @@ To add completely new commands, edit `bot.py` and add new conditions in the `on_
 
 For sticker-only additions, you usually just need to add a new `s...` key in `data/stickers.json`. The `shelp` command reads from that file automatically.
 
-For games, add a new entry to the game catalog in `bot.py`. The lobby system is ID-based, so multiple games can run at the same time in the same channel or different channels.
+For games, write a `Session` subclass (see `speedy/games/`) and add a `GameSpec` entry to `GAMES` in `speedy/cogs/games.py` — the one-word command, menu entry, natural `play <game>` phrase and help text are generated from it. For new maths topics, add generator functions and a `Topic` entry in `speedy/mathgen.py`; the topic command, menu and tests pick it up automatically.
 
 ## Troubleshooting 🔧
 
@@ -291,10 +332,11 @@ For games, add a new entry to the game catalog in `bot.py`. The lobby system is 
 - Each API call has a fallback error message
 - Try again after a few seconds if an API is temporarily down
 
-### Games not starting:
-- Make sure every participant joined the lobby before the host starts it
-- Use `sgame status <id>` to confirm the lobby ID and current players
-- Only players in the lobby can make moves once the game starts
+### Games not starting or not reacting:
+- Only one game can run per channel — type `sstop` to end the current one
+- Typed moves (`5`, `a`, `crane`) are only read while a game is running in that channel
+- The bot needs the permissions **Send Messages, Embed Links, Attach Files, Add Reactions** and **Read Message History** (Manage Messages is not required)
+- Idle games close automatically after 15 minutes
 
 ### Bot Responding Multiple Times:
 - **Check for multiple bot instances:** Run `ps aux | grep bot.py`
@@ -311,7 +353,7 @@ For games, add a new entry to the game catalog in `bot.py`. The lobby system is 
 - **Meme GIFs:** 30 curated funny GIFs from Tenor
 - **Sticker GIFs:** 120 reaction GIFs (10 per category × 12 categories)
 - **🆕 API-Powered Content:** Unlimited cat pictures, facts, emojis, and jokes!
-- **Multiplayer Games:** 4 lobby-based games with ID-based sessions
+- **Games:** 12 (4 two-player, 3 open-chat, 5 quiz formats) + a 14-topic maths trainer
 - **Total Responses:** 262 static + ∞ API content, plus games!
 
 ## Technical Details 🔧
@@ -327,7 +369,7 @@ For games, add a new entry to the game catalog in `bot.py`. The lobby system is 
 - **Embed formatting:** Professional display for media and API content
 
 ### Integrated APIs:
-All APIs are **free and require no authentication**:
+All APIs are **free**; only `sgif` needs an (optional, free) key:
 
 1. **TheCatAPI** - Random cat pictures
    - URL: https://api.thecatapi.com/
@@ -344,6 +386,24 @@ All APIs are **free and require no authentication**:
 
 5. **Chuck Norris API** - Chuck Norris jokes
    - URL: https://api.chucknorris.io/
+
+6. **Open Trivia DB** - Trivia questions (https://opentdb.com/)
+7. **FlagCDN** - Flag images and country names (https://flagcdn.com/)
+8. **PokéAPI** - Pokémon data and artwork (https://pokeapi.co/)
+9. **nekos.best** - Anime reaction GIFs (https://nekos.best/)
+10. **dog.ceo**, **randomfox.ca**, **random-d.uk** - Animal pictures
+11. **Useless Facts**, **Advice Slip**, **icanhazdadjoke**, **ZenQuotes** - Facts, advice, dad jokes, quotes
+12. **meme-api.com** - Fresh memes from Reddit (NSFW filtered)
+13. **NASA APOD** - Astronomy picture of the day (optional `NASA_API_KEY`)
+14. **GIPHY** - Optional, only for `sgif` (needs `GIPHY_API_KEY`)
+
+Images are drawn locally with [Pillow](https://python-pillow.org/) and the free DejaVu Sans font.
+
+### Development:
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
 
 ### GIF Sources:
 All GIFs are sourced from [Giphy](https://giphy.com) using direct CDN URLs. This ensures:
